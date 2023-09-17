@@ -52,7 +52,7 @@ function CompanyDetail() {
   };
 
   const breadcrumbs = [
-    <Link underline="hover" key="1" color="inherit" href="/">
+    <Link underline="hover" key="1" color="inherit" href="/react-breweries">
       Home
     </Link>,
     <Typography key="3" color="text.primary">
