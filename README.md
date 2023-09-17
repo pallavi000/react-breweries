@@ -1,24 +1,36 @@
 # Breweries App
 
-Fetch, display, and search for brewery companies from the given API endpoint, using React and TypeScript
+An Integrify Academy exercise for the Frontend module. The goal was to create a React/Typescript app that would fetch, display, and search for brewery data from an [API](https://www.openbrewerydb.org/documentation).
 
-## Requirements
+## Technologies
+- React
+- Typescript
+- MUI/MaterialUI
 
-1. Check the documentation at [https://www.openbrewerydb.org/documentation](https://www.openbrewerydb.org/documentation) Fetch and display information of all the companies.
+## Features
+- Google Oauth login
+- Fetch all data from [https://www.openbrewerydb.org/documentation](https://www.openbrewerydb.org/documentation)
+- Display all data
+- Search company by name
+- Sort company by name in ascending or descending order
+- Pagination and limit page content
+- Company detail page
+- Company location in google map
+- React Router
+- Contact us form using react-hook-form
+- About us page
+- Styling with MUI/MaterialUI components
+- README.md
+- Deployment with GitHub Pages
 
-2. Have proper display and routing that user can switch to/back from specific company's detailed page
+## Running the code
 
-3. Create search component to enable user to input text and search for companies by name.
+### Requirements
+- Node
 
-4. Use MaterialUI to make your design more appealing and responsive
+### Steps
+1. After cloning the project, run ```npm install```
+2. Run ```npm start``````
 
-5. Deploy your application and rewrite README file
-
-## Optional
-
-6. Implement performance optimization where applicable
-7. Use the queries listed in the documentation to sort and limit the returned data and build pagination feature.
-
-8. Create a contact form so that user can send question along with their contact information.
-
-9. Use Google-login option to pre-fill the contact form for user (no need to send form data anywhere, just need to fill the form. Submit button can just alert user of successful submission).
+## Deployment
+Deployed with gh-pages at [https://pallavi000.github.io/react-breweries/](https://pallavi000.github.io/react-breweries/)
