@@ -50,9 +50,12 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/react-breweries" element={<Home />} />
-            <Route path="/company/:id" element={<CompanyDetail />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
+            <Route
+              path="/react-breweries/company/:id"
+              element={<CompanyDetail />}
+            />
+            <Route path="/react-breweries/contact" element={<Contact />} />
+            <Route path="/react-breweries/about" element={<About />} />
           </Routes>
           <Footer />
         </ThemeProvider>

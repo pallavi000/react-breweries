@@ -40,7 +40,7 @@ function Company({ company }: { company: ICompany }) {
             </Typography>
           </CardContent>
           <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-            <Link to={`/company/${company.id}`} color="">
+            <Link to={`/react-breweries/company/${company.id}`} color="">
               <Button size="small">View Company</Button>
             </Link>
           </Box>

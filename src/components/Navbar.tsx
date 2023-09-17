@@ -68,10 +68,10 @@ export default function Navbar() {
           <Link color="text.primary" to="/react-breweries">
             Home
           </Link>
-          <Link color="text.primary" to="/contact">
+          <Link color="text.primary" to="/react-breweries/contact">
             Contact
           </Link>
-          <Link to="/about" color="text.danger">
+          <Link to="/react-breweries/about" color="text.danger">
             About
           </Link>
         </nav>
