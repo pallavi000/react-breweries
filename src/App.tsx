@@ -49,6 +49,7 @@ const App = () => {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/react-breweries" element={<Home />} />
             <Route path="/company/:id" element={<CompanyDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
