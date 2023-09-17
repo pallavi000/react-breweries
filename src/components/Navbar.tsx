@@ -62,10 +62,10 @@ export default function Navbar() {
     >
       <Toolbar sx={{ flexWrap: "wrap", gap: "2rem", fontSize: "18px" }}>
         <Typography variant="h4" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-          <Link to="/">Logo</Link>
+          <Link to="/react-breweries">Logo</Link>
         </Typography>
         <nav style={{ display: "flex", gap: "2rem" }}>
-          <Link color="text.primary" to="/">
+          <Link color="text.primary" to="/react-breweries">
             Home
           </Link>
           <Link color="text.primary" to="/contact">
@@ -75,7 +75,6 @@ export default function Navbar() {
             About
           </Link>
         </nav>
-
         {currentUser ? (
           <Tooltip title={currentUser.name}>
             <IconButton>
