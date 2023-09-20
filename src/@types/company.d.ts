@@ -1,4 +1,4 @@
-export interface ICompany {
+export type TCompany = {
   id: string;
   name: string;
   brewery_type: string;
@@ -15,4 +15,4 @@ export interface ICompany {
   website_url: string;
   state: string;
   street: string;
-}
+};

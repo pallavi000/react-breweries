@@ -1,33 +1,26 @@
 import {
-  Card,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
   Grid,
   Container,
-  OutlinedInput,
-  InputAdornment,
-  IconButton,
   Box,
+  IconButton,
   Pagination,
   Select,
   MenuItem,
   SelectChangeEvent,
-  InputLabel,
   FormControl,
   Skeleton,
 } from "@mui/material";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { ICompany } from "../@types/company";
-import SearchIcon from "@mui/icons-material/Search";
-import useDebounce from "../hooks/useDebounce";
-import Company from "../components/Company";
 import SortByAlphaIcon from "@mui/icons-material/SortByAlpha";
 
+import { TCompany } from "../@types/company";
+import useDebounce from "../hooks/useDebounce";
+import Company from "../components/Company";
+import SearchComponent from "../components/SearchComponent";
+
 function Home() {
-  const [companies, setCompanies] = useState<ICompany[]>([]);
+  const [companies, setCompanies] = useState<TCompany[]>([]);
   const [input, setInput] = useState<string>("");
   const searchQuery = useDebounce(input);
   const [sort, setSort] = useState<"asc" | "desc">("asc");
@@ -50,9 +43,12 @@ function Home() {
       const result = await axios.get(
         `https://api.openbrewerydb.org/v1/breweries/search?query=${searchQuery}`
       );
-      setCompanies(result.data);
+      setCompanies(result?.data);
       setIsLoading(false);
-    } catch (error: Error | any) {}
+    } catch (e) {
+      const error = e as AxiosError;
+      console.error("Axios error:", error.response?.status, error.message);
+    }
   };
 
   const fetchAllCompanies = async () => {
@@ -66,10 +62,13 @@ function Home() {
           `https://api.openbrewerydb.org/v1/breweries/meta?page=${pageNo}&sort=name,name:${sort}&per_page=${limit}`
         ),
       ]);
-      setTotalCompanies(meta.data?.total);
-      setCompanies(result.data);
+      setTotalCompanies(meta?.data?.total);
+      setCompanies(result?.data);
       setIsLoading(false);
-    } catch (error: Error | any) {}
+    } catch (e) {
+      const error = e as AxiosError;
+      console.error("Axios error:", error.response?.status, error.message);
+    }
   };
 
   const handlePageChange = (e: ChangeEvent<unknown>, value: number) => {
@@ -92,26 +91,14 @@ function Home() {
           gap: "1rem",
         }}
       >
-        <OutlinedInput
-          required
-          id="outlined-required"
-          size="small"
-          placeholder="Search here..."
-          onChange={(e) => setInput(e.target.value)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton edge="end">
-                <SearchIcon />
-              </IconButton>
-            </InputAdornment>
-          }
-        />
+        <SearchComponent setInput={setInput} />
         <IconButton
           onClick={() => setSort((prev) => (prev === "asc" ? "desc" : "asc"))}
         >
           <SortByAlphaIcon color="inherit" />
         </IconButton>
       </Box>
+
       <Grid container spacing={4} columns={12}>
         {isLoading
           ? Array.from(new Array(limit)).map((arr) => {

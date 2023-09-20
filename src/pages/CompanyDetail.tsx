@@ -9,16 +9,17 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Link from "@mui/material/Link";
-import { ICompany } from "../@types/company";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import GoogleMapReact from "google-map-react";
+
 import { TGoogleMapProps } from "../@types/shared";
+import { TCompany } from "../@types/company";
 
 const AnyReactComponent = ({ text }: { text: string }) => <div>{text}</div>;
 
 function CompanyDetail() {
-  const [company, setCompany] = useState<ICompany>();
+  const [company, setCompany] = useState<TCompany>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [defaultProps, setDefaultProps] = useState<TGoogleMapProps>({
     center: {
@@ -39,16 +40,19 @@ function CompanyDetail() {
       const result = await axios.get(
         `https://api.openbrewerydb.org/v1/breweries/${id}`
       );
-      setCompany(result.data);
+      setCompany(result?.data);
       setIsLoading(false);
       setDefaultProps({
         center: {
-          lat: Number(result.data?.latitude),
-          lng: Number(result.data?.longitude),
+          lat: Number(result?.data?.latitude),
+          lng: Number(result?.data?.longitude),
         },
         zoom: 15,
       });
-    } catch (error: Error | any) {}
+    } catch (e) {
+      const error = e as AxiosError;
+      console.error("Axios error:", error.response?.status, error.message);
+    }
   };
 
   const breadcrumbs = [

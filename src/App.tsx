@@ -1,14 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider, createTheme } from "@mui/material";
+import { ToastContainer } from "react-toastify";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
 import CompanyDetail from "./pages/CompanyDetail";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
-import { ToastContainer } from "react-toastify";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import About from "./pages/About";
 
 const defaultTheme = createTheme({

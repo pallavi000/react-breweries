@@ -10,7 +10,7 @@ import {
 import { red } from "@mui/material/colors";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 type Inputs = {

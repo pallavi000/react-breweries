@@ -1,24 +1,15 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import {
-  Avatar,
-  InputAdornment,
-  OutlinedInput,
-  TextField,
-  Tooltip,
-} from "@mui/material";
-import { Visibility } from "@mui/icons-material";
+import { Avatar, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import { CredentialResponse, useGoogleOneTapLogin } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
+
 import { TCurrentUser, TGoogleCredentialUser } from "../@types/user";
 
 export default function Navbar() {
